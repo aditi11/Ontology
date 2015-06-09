@@ -9,8 +9,9 @@ e=e.split('\n')
 allnodes=[]
 nodes={}
 edges={'source':[],'target':[],'label':[]}
-two_op=['and','or']
+two_op=['and','or','<=']
 one_op=['not']
+op_map={'and':'and','or':'or','not':'not','<=':'implies'}
 two_tables={}
 one_tables={}
 truefalse={'t':True,'T':True,'f':False,'F':False}
@@ -82,13 +83,15 @@ while True:
 		    	    option2=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
 	     	option2=allnodes[int(listoftargets[q2])][1]
-	    ques='The '+label+' of '+allnodes[int(source)][1]+' is '+option1+' '+op+'  its '+listoflabels[q2]+' is '+option2+'. (True/False) Press t for true and f for false :  '
+	    ques='The '+label+' of '+allnodes[int(source)][1]+' is '+option1+' '+op_map[op]+'  its '+listoflabels[q2]+' is '+option2+'. (True/False) Press t for true and f for false :  '
 	    '''print 'label='+label
 	    print 'source='+allnodes[int(source)][1]
 	    print 'option1='+option1
 	    print 'label2='+listoflabels[q2]
 	    print 'option2='+option2'''
 	else:       #same target
+	    if op=='<=':
+	       continue
 	    listofsources=[]
 	    for i in range(len(edges['target'])):
 		if edges['target'][i]==target and edges['label'][i]==label and edges['source'][i]!=source:
@@ -112,7 +115,7 @@ while True:
 		    	    option2=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
 	    	option2=allnodes[int(listofsources[q2])][1]
-	    ques=allnodes[int(target)][1]+' is the '+label+' of '+option1+' '+op+' '+option2+'. (True/False) Press t for true and f for false :  '
+	    ques=allnodes[int(target)][1]+' is the '+label+' of '+option1+' '+op_map[op]+' '+option2+'. (True/False) Press t for true and f for false :  '
 	inp=raw_input(ques)
 	ans=row[2]
     else:
@@ -142,7 +145,7 @@ while True:
 		    	    option1=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
 	    	option1=allnodes[int(source)][1]
-	    ques=allnodes[int(target)][1]+' is '+op+' the '+label+' of '+option1+'. (True/False) Press t for true and f for false : '
+	    ques=allnodes[int(target)][1]+' is '+op_map[op]+' the '+label+' of '+option1+'. (True/False) Press t for true and f for false : '
 	inp=raw_input(ques)
 	ans=row[1]
     while inp!='t' and inp!='T' and inp!='f' and inp!='F':
@@ -152,9 +155,3 @@ while True:
     else:
         print 'Incorrect!'
     print
-
-
-
-
-	    
-
