@@ -9,12 +9,14 @@ e=e.split('\n')
 allnodes=[]
 nodes={}
 edges={'source':[],'target':[],'label':[]}
-two_op=['and','or','<=']
+two_op=['and','or','!=','<=']
 one_op=['not']
-op_map={'and':'and','or':'or','not':'not','<=':'implies'}
+op_map={'and':'and','or':['either','or','or both'],'not':'not','<=':'implies','!=':['either','or']}
 two_tables={}
 one_tables={}
 truefalse={'t':True,'T':True,'f':False,'F':False}
+allnodes.append([])
+implies={'jati':['aaroh','avroh'],'aaroh':['thaat'],'avroh':['thaat'],'vadi':['pakad','samvadi']}
 
 for i in range(len(two_op)):
     two_tables[two_op[i]]=[]
@@ -43,14 +45,54 @@ for i in range(1,979):
     edges['target'].append(instances[1])
     edges['label'].append(instances[2])
 
+aaroh=[]
+avroh=[]
+for i in range(162):
+    aaroh.append('')
+    avroh.append('')
+
+for i in range(979,3750):
+    instances=e[i].split(',')
+    if allnodes[int(instances[1])][1].replace("'",'')=='':
+	continue
+    aaroh[int(instances[0])-1]=aaroh[int(instances[0])-1]+' '+allnodes[int(instances[1])][1].replace("'",'')
+
+for i in range(3750,7004):
+    instances=e[i].split(',')
+    if allnodes[int(instances[1])][1].replace("'",'')=='':
+	continue
+    avroh[int(instances[0])-1]=avroh[int(instances[0])-1]+' '+allnodes[int(instances[1])][1].replace("'",'')
+
+#print aaroh
+#print avroh
+nodes['aaroh']=[]
+nodes['avroh']=[]
+
+for i in range(162):
+    nodes['aaroh'].append(aaroh[i])
+    nodes['avroh'].append(avroh[i])
+    allnodes.append(["'aaroh'",aaroh[i]])
+    allnodes.append(["'avroh'",avroh[i]])
+    edges['source'].append(str(i+1))
+    edges['source'].append(str(i+1))
+    edges['target'].append(str(len(allnodes)-2))
+    edges['target'].append(str(len(allnodes)-1))
+    edges['label'].append("'aaroh'")
+    edges['label'].append("'avroh'")
+
 #print one_tables 
 #print two_tables 
-    
+   
+print nodes.keys()
+
 while True:
-    q1=random.randrange(1,978)
-    choice=random.randrange(3)
+    q1=random.randrange(1,1302)
+    print q1
+    choice=random.randrange(6)
     ques=''
-    if choice==0 or choice==1:
+    option1=''
+    option2=''
+    if choice<5:
         op=two_op[random.randrange(len(two_tables))]
         record=random.randrange(4)
 	row=two_tables[op][record]
@@ -58,6 +100,11 @@ while True:
         source=edges['source'][q1]
         target=edges['target'][q1]
         label=edges['label'][q1]
+	print source+':'+target+':'+label
+	type1=''
+	type2=''
+	impliesflag=0
+	print target
         if sourceortarget==0:   #same source
 	    #print row
 	    listoftargets=[]
@@ -70,20 +117,58 @@ while True:
 	    if row[0]==False:
 		for i in nodes.keys():
 		    if allnodes[int(target)][0]==i:
+		    	type1=i
 		        option1=nodes[i][random.randrange(len(nodes[i]))]
 		    	while option1==allnodes[int(target)][1]:
 		    	    option1=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
+	     	type1=allnodes[int(target)][0]
 	     	option1=allnodes[int(target)][1]
+	    if op=='<=' and (type1.replace("'",'')) not in implies:
+	     	print 'type1 not satisfied'
+	     	print type1
+	     	continue
 	    if row[1]==False:
-	     	for i in nodes.keys():
-		    if allnodes[int(listoftargets[q2])][0]==i:
-		    	option2=nodes[i][random.randrange(len(nodes[i]))]
-		    	while option2==allnodes[int(listoftargets[q2])][1]:
-		    	    option2=nodes[i][random.randrange(len(nodes[i]))]
+	     	ctr=0
+	        if op=='<=':
+	     	    print implies[type1.replace("'",'')]
+	     	    type2=implies[type1.replace("'",'')][random.randrange(len(implies[type1.replace("'",'')]))]
+	     	    option2=nodes[type2.replace("'",'')][random.randrange(len(nodes[type2.replace("'",'')]))]
+	     	    for j in range(len(listoflabels)):
+			print listoflabels[j]
+	     		if listoflabels[j].replace("'",'')==type2:
+	     		    while option2==allnodes[int(listoftargets[j])][1]:
+				option2=nodes[type2.replace("'",'')][random.randrange(len(nodes[type2.replace("'",'')]))]
+			    break
+		    listoflabels[q2]=type2
+	        else:
+	     	    for i in nodes.keys():
+		    	if allnodes[int(listoftargets[q2])][0]==i:
+		    	    type2=i
+			    option2=nodes[i][random.randrange(len(nodes[i]))]
+		    	    while option2==allnodes[int(listoftargets[q2])][1]:
+			        option2=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
-	     	option2=allnodes[int(listoftargets[q2])][1]
-	    ques='The '+label+' of '+allnodes[int(source)][1]+' is '+option1+' '+op_map[op]+'  its '+listoflabels[q2]+' is '+option2+'. (True/False) Press t for true and f for false :  '
+	        if op=='<=':
+	      	    print implies[type1.replace("'",'')]
+	            type2=implies[type1.replace("'",'')][random.randrange(len(implies[type1.replace("'",'')]))]
+	      	    print type2
+	      	    for j in range(len(listoflabels)):
+			print listoflabels[j]
+			if listoflabels[j].replace("'",'')==type2:
+			    print 'found match'
+			    option2=allnodes[int(listoftargets[j])][1]
+			    break
+		    listoflabels[q2]=type2
+		else:
+	    	    type2=allnodes[int(listoftargets[q2])][0]
+	     	    option2=allnodes[int(listoftargets[q2])][1]
+	    if isinstance(op_map[op],list)==False:
+	    	ques='The '+label+' of '+allnodes[int(source)][1]+' is '+option1+' '+op_map[op]+'  its '+listoflabels[q2]+' is '+str(option2)+'. (True/False) Press t for true and f for false :  '
+	    elif len(op_map[op])==2:
+	    	ques=op_map[op][0]+' the '+label+' of '+allnodes[int(source)][1]+' is '+option1+' '+op_map[op][1]+' its '+listoflabels[q2]+' is '+option2+'. (True/False) Press t for true and f for false :  '
+	    else:
+	    	continue
 	    '''print 'label='+label
 	    print 'source='+allnodes[int(source)][1]
 	    print 'option1='+option1
@@ -115,7 +200,12 @@ while True:
 		    	    option2=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
 	    	option2=allnodes[int(listofsources[q2])][1]
-	    ques=allnodes[int(target)][1]+' is the '+label+' of '+option1+' '+op_map[op]+' '+option2+'. (True/False) Press t for true and f for false :  '
+	    if isinstance(op_map[op],list)==False: 
+	    	ques=allnodes[int(target)][1]+' is the '+label+' of '+option1+' '+op_map[op]+' '+option2+'. (True/False) Press t for true and f for false :  '
+	    elif len(op_map[op])==2:
+	    	ques=allnodes[int(target)][1]+' is the '+label+' of '+op_map[op][0]+' '+option1+' '+op_map[op][1]+' '+option2+'. (True/False Press t for true and f for false :  '
+	    else:
+	    	ques=allnodes[int(target)][1]+' is the '+label+' of '+op_map[op][0]+' '+option1+' '+op_map[op][1]+' '+option2+' '+op_map[op][2]+'. (True/False Press t for true and f for false :  '
 	inp=raw_input(ques)
 	ans=row[2]
     else:
