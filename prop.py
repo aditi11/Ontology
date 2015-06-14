@@ -65,12 +65,12 @@ for i in range(3750,7004):
 
 #print aaroh
 #print avroh
-nodes['aaroh']=[]
-nodes['avroh']=[]
+nodes["'aaroh'"]=[]
+nodes["'avroh'"]=[]
 
 for i in range(162):
-    nodes['aaroh'].append(aaroh[i])
-    nodes['avroh'].append(avroh[i])
+    nodes["'aaroh'"].append(aaroh[i])
+    nodes["'avroh'"].append(avroh[i])
     allnodes.append(["'aaroh'",aaroh[i]])
     allnodes.append(["'avroh'",avroh[i]])
     edges['source'].append(str(i+1))
@@ -87,7 +87,7 @@ print nodes.keys()
 
 while True:
     q1=random.randrange(1,1302)
-    print q1
+    #print q1
     choice=random.randrange(6)
     ques=''
     option1=''
@@ -100,7 +100,7 @@ while True:
         source=edges['source'][q1]
         target=edges['target'][q1]
         label=edges['label'][q1]
-	print source+':'+target+':'+label
+	#print source+':'+target+':'+label
 	type1=''
 	type2=''
 	impliesflag=0
@@ -125,17 +125,16 @@ while True:
 	     	type1=allnodes[int(target)][0]
 	     	option1=allnodes[int(target)][1]
 	    if op=='<=' and (type1.replace("'",'')) not in implies:
-	     	print 'type1 not satisfied'
-	     	print type1
+		#print 'type1 not satisfied'
+		#print type1
 	     	continue
 	    if row[1]==False:
 	     	ctr=0
 	        if op=='<=':
-	     	    print implies[type1.replace("'",'')]
 	     	    type2=implies[type1.replace("'",'')][random.randrange(len(implies[type1.replace("'",'')]))]
-	     	    option2=nodes[type2.replace("'",'')][random.randrange(len(nodes[type2.replace("'",'')]))]
+		    print type2
+	     	    option2=nodes["'"+type2+"'"][random.randrange(len(nodes["'"+type2+"'"]))]
 	     	    for j in range(len(listoflabels)):
-			print listoflabels[j]
 	     		if listoflabels[j].replace("'",'')==type2:
 	     		    while option2==allnodes[int(listoftargets[j])][1]:
 				option2=nodes[type2.replace("'",'')][random.randrange(len(nodes[type2.replace("'",'')]))]
@@ -143,6 +142,7 @@ while True:
 		    listoflabels[q2]=type2
 	        else:
 	     	    for i in nodes.keys():
+			print i
 		    	if allnodes[int(listoftargets[q2])][0]==i:
 		    	    type2=i
 			    option2=nodes[i][random.randrange(len(nodes[i]))]
@@ -150,19 +150,20 @@ while True:
 			        option2=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
 	        if op=='<=':
-	      	    print implies[type1.replace("'",'')]
 	            type2=implies[type1.replace("'",'')][random.randrange(len(implies[type1.replace("'",'')]))]
-	      	    print type2
 	      	    for j in range(len(listoflabels)):
-			print listoflabels[j]
 			if listoflabels[j].replace("'",'')==type2:
-			    print 'found match'
 			    option2=allnodes[int(listoftargets[j])][1]
 			    break
 		    listoflabels[q2]=type2
 		else:
 	    	    type2=allnodes[int(listoftargets[q2])][0]
 	     	    option2=allnodes[int(listoftargets[q2])][1]
+	    print 'label:'+label
+	    print 'source:'+allnodes[int(source)][1]
+	    print 'option1:'+option1
+	    print 'label2:'+listoflabels[q2]
+	    print 'option2:'+str(option2)
 	    if isinstance(op_map[op],list)==False:
 	    	ques='The '+label+' of '+allnodes[int(source)][1]+' is '+option1+' '+op_map[op]+'  its '+listoflabels[q2]+' is '+str(option2)+'. (True/False) Press t for true and f for false :  '
 	    elif len(op_map[op])==2:
