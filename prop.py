@@ -70,8 +70,6 @@ for i in range(3750,7004):
 	svars[int(instances[0])-1].append(allnodes[int(instances[1])][1])
 
 
-#print aaroh
-#print avroh
 nodes["'aaroh'"]=[]
 nodes["'avroh'"]=[]
 
@@ -87,36 +85,25 @@ for i in range(162):
     edges['label'].append("'aaroh'")
     edges['label'].append("'avroh'")
 
-#print one_tables 
-#print two_tables 
-   
-#print nodes.keys()
-
 
 while True:
     q1=random.randrange(1,1302)
-    #print q1
     choice=random.randrange(6)
     ques=''
     option1=''
     option2=''
     if choice<5:
         op=two_op[random.randrange(len(two_tables))]
-	if not op=='<=':
-	    continue
         record=random.randrange(4)
 	row=two_tables[op][record]
         sourceortarget=random.randrange(2)
         source=edges['source'][q1]
         target=edges['target'][q1]
         label=edges['label'][q1]
-	#print source+':'+target+':'+label
 	type1=''
 	type2=''
 	impliesflag=0
-	print target
         if sourceortarget==0:   #same source
-	    #print row
 	    listoftargets=[]
             listoflabels=[]
             for i in range(len(edges['source'])):
@@ -135,18 +122,14 @@ while True:
 	     	type1=allnodes[int(target)][0]
 	     	option1=allnodes[int(target)][1]
 	    if op=='<=' and (type1.replace("'",'')) not in implies and label.replace("'",'') not in implies:
-		#print type1+' or '+label+' not in implies'
 	     	continue
 	    if row[1]==False:
 	     	ctr=0
 	        if op=='<=':
-		    #print 'label:'+label
-		    #print 'Type1: '+type1
 		    if type1=="'svar'":
 		    	type2=implies[label.replace("'",'')][random.randrange(len(implies[label.replace("'",'')]))]
 		    else:
 	     	    	type2=implies[type1.replace("'",'')][random.randrange(len(implies[type1.replace("'",'')]))]
-		    #print type2
 		    if type2=='svar':
 		    	option2=nodes["'svar'"][random.randrange(len(nodes["'svar'"]))]
 			while option2 in svars[int(source)-1]:
@@ -178,8 +161,6 @@ while True:
 			        option2=nodes[i][random.randrange(len(nodes[i]))]
 	    else:
 	        if op=='<=':
-		    #print 'label:'+label
-		    #print 'Type1: '+type1
 		    if type1=="'svar'":
 		    	type2=implies[label.replace("'",'')][random.randrange(len(implies[label.replace("'",'')]))]
 		    else:
