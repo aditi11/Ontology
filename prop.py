@@ -10,8 +10,8 @@ allnodes=[]
 nodes={}
 edges={'source':[],'target':[],'label':[]}
 two_op=['and','or','!=','<=','and not']
-one_op=['not']
-op_map={'and':['','and',''],'or':['either','or','or both'],'not':'not','<=':['','implies',''],'!=':['either','or',''],'and not':['','but not','']}
+one_op=['not','']
+op_map={'and':['','and',''],'or':['either','or','or both'],'not':'not','<=':['','implies',''],'!=':['either','or',''],'and not':['','but not',''],'':''}
 two_tables={}
 one_tables={}
 truefalse={'t':True,'T':True,'f':False,'F':False}
