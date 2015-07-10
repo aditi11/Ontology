@@ -9,14 +9,16 @@ e=e.split('\n')
 allnodes=[]
 nodes={}
 edges={'source':[],'target':[],'label':[]}
-two_op=['and','or','!=','<=']
+two_op=['and','or','!=','<=','and not']
 one_op=['not']
-op_map={'and':['','and',''],'or':['either','or','or both'],'not':'not','<=':['','implies',''],'!=':['either','or','']}
+op_map={'and':['','and',''],'or':['either','or','or both'],'not':'not','<=':['','implies',''],'!=':['either','or',''],'and not':['','but not','']}
 two_tables={}
 one_tables={}
 truefalse={'t':True,'T':True,'f':False,'F':False}
 allnodes.append([])
 implies={'jati':['aaroh','avroh'],'aaroh':['thaat','svar'],'avroh':['thaat','svar'],'thaat':['svar'],'vadi':['pakad'],'samvadi':['vadi']}
+pakads=[]
+listofsvars=['S','r','R','g','G','m','M','P','d','D','n','N']
 
 for i in range(len(two_op)):
     two_tables[two_op[i]]=[]
@@ -32,22 +34,33 @@ for i in range(len(one_op)):
 
 for i in range(1,len(n)-1):
     instances=n[i].split(',')
-    if(instances[1] in nodes.keys()):
+    if instances[1] in nodes.keys():
         nodes[instances[1]].append(instances[2])
     else:
         nodes[instances[1]]=[]
         nodes[instances[1]].append(instances[2])
     allnodes.append(list(instances[1:3]))
 
+for i in range(162):
+    pakads.append('')
+
 for i in range(1,979):
     instances=e[i].split(',')
     edges['source'].append(instances[0])
     edges['target'].append(instances[1])
     edges['label'].append(instances[2])
+    if instances[2]=="'pakad'":
+	if instances[1]=='[]':
+	   continue
+	pakads[int(instances[0])-1]=allnodes[int(instances[1])-1][1]
 
 aaroh=[]
 avroh=[]
 svars=[]
+four_grams=[]
+five_grams=[]
+six_grams=[]
+
 for i in range(162):
     aaroh.append('')
     avroh.append('')
@@ -85,10 +98,91 @@ for i in range(162):
     edges['label'].append("'aaroh'")
     edges['label'].append("'avroh'")
 
+for i in range(162):
+    aa=nodes["'aaroh'"][i]
+    av=nodes["'avroh'"][i]
+    pa=pakads[i]
+    temp=[]
+    four_grams.append([])
+    five_grams.append([])
+    six_grams.append([])
+    for j in range(len(aa)):
+	if aa[j] in listofsvars:
+	    temp.append(aa[j])
+    for j in range(len(temp)-3):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]
+	if phrase not in four_grams[i]:
+	    four_grams[i].append(phrase)
+    for j in range(len(temp)-4):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]+' '+temp[j+4]
+	if phrase not in five_grams[i]:
+	    five_grams[i].append(phrase)
+    for j in range(len(temp)-5):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]+' '+temp[j+4]+' '+temp[j+5]
+	if phrase not in six_grams[i]:
+	    six_grams[i].append(phrase)
+    temp=[]
+    for j in range(len(av)):
+	if av[j] in listofsvars:
+	    temp.append(av[j])
+    for j in range(len(temp)-3):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]
+	if phrase not in four_grams[i]:
+	    four_grams[i].append(phrase)
+    for j in range(len(temp)-4):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]+' '+temp[j+4]
+	if phrase not in five_grams[i]:
+	    five_grams[i].append(phrase)
+    for j in range(len(temp)-5):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]+' '+temp[j+4]+' '+temp[j+5]
+	if phrase not in six_grams[i]:
+	    six_grams[i].append(phrase)
+    temp=[]
+    for j in range(len(pa)):
+	if pa[j] in listofsvars:
+	    temp.append(pa[j])
+    for j in range(len(temp)-3):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]
+	if phrase not in four_grams[i]:
+	    four_grams[i].append(phrase)
+    for j in range(len(temp)-4):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]+' '+temp[j+4]
+	if phrase not in five_grams[i]:
+	    five_grams[i].append(phrase)
+    for j in range(len(temp)-5):
+	phrase=temp[j]+' '+temp[j+1]+' '+temp[j+2]+' '+temp[j+3]+' '+temp[j+4]+' '+temp[j+5]
+	if phrase not in six_grams[i]:
+	    six_grams[i].append(phrase)
+
+n_grams_dict={}
+
+for i in range(162):
+    for j in range(len(four_grams[i])):
+	if four_grams[i][j] in n_grams_dict.keys():
+	    n_grams_dict[four_grams[i][j]].append(i)
+	else:
+	    n_grams_dict[four_grams[i][j]]=[]
+	    n_grams_dict[four_grams[i][j]].append(i)
+    for j in range(len(five_grams[i])):
+	if five_grams[i][j] in n_grams_dict.keys():
+	    n_grams_dict[five_grams[i][j]].append(i)
+	else:
+	    n_grams_dict[five_grams[i][j]]=[]
+	    n_grams_dict[five_grams[i][j]].append(i)
+    for j in range(len(six_grams[i])):
+	if six_grams[i][j] in n_grams_dict.keys():
+	    n_grams_dict[six_grams[i][j]].append(i)
+	else:
+	    n_grams_dict[six_grams[i][j]]=[]
+	    n_grams_dict[six_grams[i][j]].append(i)
+
+'''for i in n_grams_dict.keys():
+    print i+':'
+    print n_grams_dict[i]'''
 
 while True:
     q1=random.randrange(1,1302)
-    choice=random.randrange(6)
+    choice=random.randrange(8)
     ques=''
     option1=''
     option2=''
@@ -104,6 +198,8 @@ while True:
 	type2=''
 	impliesflag=0
         if sourceortarget==0:   #same source
+	    if op=='and not':
+	    	continue
 	    listoftargets=[]
             listoflabels=[]
             for i in range(len(edges['source'])):
@@ -199,7 +295,16 @@ while True:
 		    if allnodes[int(source)][0]==i:
 		    	option1=nodes[i][random.randrange(len(nodes[i]))]
 		    	while option1==allnodes[int(source)][1]:
+		    	    flag=0
 		    	    option1=nodes[i][random.randrange(len(nodes[i]))]
+		    	    for e in range(len(edges)):
+			        if edges['source'][e]==option1 and edges['target'][e]==allnodes[int(target)][1]:
+				    flag=1
+				    break
+			    if flag==1:
+				option1=allnodes[int(source)][1]
+			    else:
+				break
 	    else:
 	    	option1=allnodes[int(source)][1]
 	    if row[1]==False:
@@ -207,13 +312,21 @@ while True:
 		    if allnodes[int(listofsources[q2])][0]==i:
 		    	option2=nodes[i][random.randrange(len(nodes[i]))]
 		    	while option2==allnodes[int(listofsources[q2])][1]:
+		    	    flag=0
 		    	    option2=nodes[i][random.randrange(len(nodes[i]))]
+		    	    for e in range(len(edges)):
+				if edges['source'][e]==option2 and edges['target'][e]==allnodes[int(target)][1]:
+				    flag=1
+				    break
+			    if flag==1:
+			 	option2=allnodes[int(listofsources[q2])][1]
+			    else:
+			 	break
 	    else:
 	    	option2=allnodes[int(listofsources[q2])][1]
 	    ques=allnodes[int(target)][1]+' is the '+label+' of '+op_map[op][0]+' '+option1+' '+op_map[op][1]+' '+option2+' '+op_map[op][2]+'. (True/False Press t for true and f for false :  '
-	inp=raw_input(ques)
 	ans=row[2]
-    else:
+    elif choice==5:
     	op=one_op[random.randrange(len(one_tables))]
 	record=random.randrange(2)
 	row=one_tables[op][record]
@@ -237,12 +350,47 @@ while True:
 		    if allnodes[int(source)][0]==i:
 		    	option1=nodes[i][random.randrange(len(nodes[i]))]
 		    	while option1==allnodes[int(source)][1]:
+		    	    flag=0
 		    	    option1=nodes[i][random.randrange(len(nodes[i]))]
+		    	    for e in range(len(edges)):
+			        if edges['source'][e]==option1 and edges['target'][e]==allnodes[int(target)][1]:
+				    flag=1
+				    break
+			    if flag==1:
+				option1=allnodes[int(source)][1]
+			    else:
+				break
 	    else:
 	    	option1=allnodes[int(source)][1]
 	    ques=allnodes[int(target)][1]+' is '+op_map[op]+' the '+label+' of '+option1+'. (True/False) Press t for true and f for false : '
-	inp=raw_input(ques)
 	ans=row[1]
+    else:
+	op=two_op[random.randrange(len(two_tables))]
+	record=random.randrange(4)
+	row=two_tables[op][record]
+	if op=='<=':
+	    continue
+	phrases=n_grams_dict.keys()
+	phrase=phrases[random.randrange(len(phrases))]
+	if len(phrase)==1:
+	    continue
+	if row[0]==False:
+	    option1=random.randrange(162)
+	    while option1 in n_grams_dict[phrase]:
+		option1=random.randrange(162)
+	else:
+	    option1=n_grams_dict[phrase][random.randrange(len(n_grams_dict[phrase]))]
+	if row[1]==False:
+	    option2=random.randrange(162)
+	    while option2 in n_grams_dict[phrase] or option2==option1:
+	    	option2=random.randrange(162)
+	else:
+	    option2=n_grams_dict[phrase][random.randrange(len(n_grams_dict[phrase]))]
+	    while option1==option2:
+	        option2=n_grams_dict[phrase][random.randrange(len(n_grams_dict[phrase]))]
+	ques='The phrase '+phrase+' is present in '+op_map[op][0]+' '+nodes["'raga'"][option1]+' '+op_map[op][1]+' '+nodes["'raga'"][option2]+' '+op_map[op][2]+'. (True/False) Press t for true and f for false: '
+	ans=row[2]
+    inp=raw_input(ques)
     while inp!='t' and inp!='T' and inp!='f' and inp!='F':
         inp=raw_input('Please enter t for true and f for false.  ')
     if truefalse[inp]==ans:
