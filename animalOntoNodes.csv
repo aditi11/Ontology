@@ -1,0 +1,430 @@
+nodes,labels
+,biome
+-,biome
+Accipiter gentilis,sciname
+Acipenser sturio,sciname
+Aix sponsa,sciname
+Alligator mississipiensis,sciname
+Alligator_ American,name
+Alopex lagopus,sciname
+Ambiant,tempreg
+Ambloplites rupestris,sciname
+Ambystome mecicanum,sciname
+Amphibia,class
+Anas platyrhynchos,sciname
+Anguilla rostrata,sciname
+Anolis carolinensis,sciname
+Apteryx australis,sciname
+Aquatic,habitat
+Aquatic Marine,habitat
+Archilochus colubris,sciname
+Arctic,biome
+Arctic-waters,biome
+Armadillo_ Nine-banded,name
+Aves,class
+Balaenoptera musculus,sciname
+Barns Caves,biome
+Bass_ Large Mouth Black,name
+Bass_ Rock,name
+Bat_ Flying fox,name
+Bat_ little brown,name
+Bays,biome
+Bays-shallow,biome
+Bear_ American Black,name
+Bear_ Grizzly,name
+Beaver,name
+Betta splendens,sciname
+Boa Constrictor,name
+Bony-Plates,integument
+Bos taurus,sciname
+Brooks,biome
+Bufo americanus,sciname
+Bullhead_ Brown,name
+Buteo buteo,sciname
+Buzzard,name
+Callorhinus ursinus,sciname
+Camel,name
+Camelus bactrianus,sciname
+Canary,name
+Canis familiaris,sciname
+Capra hircus,sciname
+Carassius auratus,sciname
+Carnivore,foodtype
+Carnivore Insectivore,foodtype
+Carp,name
+Castor canadensis,sciname
+Cat_ domestic,name
+Cathartes aura,sciname
+Cats Snakes Owls,MajorEnemies
+Cavia cobaya,sciname
+Chameleon,name
+Chameleon_ Madagascar,name
+Chicken,name
+Chipmunk_ Eastern,name
+Chondrichthyea,class
+Chordeles minor,sciname
+Climbing Walking,locomotion
+Clupea harengus,sciname
+Coastline-Arctic,biome
+Coastline-Atlantic,biome
+Cobra_ Indian,name
+Cod_ Atlantic,name
+Colinus virginianus,sciname
+Columba livia,sciname
+Constrictor constrictor,sciname
+Corvus cornix,sciname
+Coturnix coturnix,sciname
+Cow,name
+Crawling,locomotion
+Cricetus cricetus,sciname
+Crocodile_ Saltwater,name
+Crocodylus porosus,sciname
+Crow_ Hooded,name
+Cryptobranchus alleganiensis,sciname
+Cyclostomata,class
+Cyprinus carpio,sciname
+Dasyatis americana,sciname
+Dasypus novemcinctus,sciname
+Deer_ white-tailed,name
+Desert,biome
+Desert-Africa,biome
+Desert-Africa Mid-East-Asia,biome
+Didelphis marsupialis,sciname
+Dog_ Basset Hound,name
+Dog_ Beagle,name
+Dog_ Boston Terrier,name
+Dog_ Collie,name
+Dog_ Fox Terrier,name
+Dog_ Foxhound,name
+Dog_ Irish Terrier,name
+Dog_ Pekingese,name
+Dog_ Pointer,name
+Dog_ Saint Bernard,name
+Dog_ Whippet,name
+Dogfish_ Pacific Spiny,name
+Dogs Cats,MajorEnemies
+Dogs Cats Foxes Hawks Skunks Raccoon Crows Weasels,MajorEnemies
+Dogs Cats Man,MajorEnemies
+Dolphin_ Bottlenose,name
+Domestic,biome
+Donkey,name
+Duck_ Mallard,name
+Duck_ Wood,name
+Eel_ American,name
+Elasmobranchii,class
+Elephant_ African,name
+Elephant_ Indian,name
+Elephas maximus,sciname
+Equus asinus,sciname
+Equus asinus X Equus caballus,sciname
+Equus caballus,sciname
+Erethizon dorsatum,sciname
+Esox lucius,sciname
+European Jackdaw,name
+Evoluticavda,sciname
+Falco naumanni,sciname
+Falco peregrinus,sciname
+Falcon_ Peregrin,name
+Feat her,integument
+Feather,integument
+Felis catus,sciname
+Fields-open,biome
+Fighting Fish_ Siamese,name
+Fish,MajorEnemies
+Fisher,MajorEnemies
+Flight,locomotion
+Flight Swimming,locomotion
+Flight Walking,locomotion
+Flounder_ Winter,name
+Forest Brushland,biome
+Forest-coniferous,biome
+Forest-pine Forest-Hardwood Trees -Nut River-bottoms,biome
+Forest-rain,biome
+Forest-tropical,biome
+Forest-tropical-Central-Africa,biome
+Forest-tropical-rain,biome
+Forests Swamps Brushland,biome
+Forests-Deciduous Brushland,biome
+Fox_ Arctic,name
+Frog_ Bull,name
+Frog_ Cuban,name
+Frog_ leopard,name
+Frugilegus,sciname
+Fur,integument
+Gadus callarias,sciname
+Gallus gallus domesticus,sciname
+Gar_ longnose,name
+Gasterosteus aculeatus,sciname
+Gelatinous,eggshell
+Gila Monster,name
+Giraffa camelopardalis,sciname
+Giraffe_ male,name
+Goat_ Milch,name
+Goby_ Philippine,name
+Goldfish,name
+Goshawk,name
+Grassland,biome
+Grassland Brushland,biome
+Grassland Brushland Forest-deciduous,biome
+Grassland Brushland-Australia,biome
+Grassland Woodland,biome
+Grassland-Africa,biome
+Grassland-Africa Dry-Savannahs,biome
+Grassland-Africa Forest-India,biome
+Grassland-Southern,biome
+Guinea Pig,name
+Guinea fowl,name
+Gull_ Herring,name
+Guppy,name
+Ha rd,eggshell
+Haddock,name
+Hair,integument
+Hamster,name
+Hard,eggshell
+Hawk_ Night,name
+Hawks Owls Weasels Snakes Cats,MajorEnemies
+Hawks Snakes Weasels,MajorEnemies
+Hellbender,name
+Heloderma suspectum,sciname
+Herbivore,foodtype
+Herbivore Insectivore,foodtype
+Herring_ Atlantic,name
+Hide-thick,integument
+Hippocampus hudsonius,sciname
+Homeotherm,tempreg
+Homo sapiens,sciname
+Hopping Swimming,locomotion
+Horse,name
+Human,name
+Hummingbird,name
+Hummingbird_ Cuban bee,name
+Ictalurus nebulosus,sciname
+Insectivore,foodtype
+Insectivore Carnivore,foodtype
+Insectivore Herbivore,foodtype
+Jaguar,MajorEnemies
+Jumping,locomotion
+Jumping Swimming,locomotion
+Jungles Grasslands-Tropical-Asia,biome
+Kangaroo_ Red,name
+Kestrel_ lesser,name
+Killer-whales,MajorEnemies
+Killer-whales Man,MajorEnemies
+Kiwi,name
+Lakes,biome
+Lakes Ponds,biome
+Lakes Rivers,biome
+Lakes Streams,biome
+Lakes-N.America,biome
+Lakes-banks Streams-banks,biome
+Larus argentatus,sciname
+Leathery,eggshell
+Lebistes reticulatus,sciname
+Lepisosteus osseus,sciname
+Lepomis gibbosus,sciname
+Lepus cuniculus,sciname
+Lion,name
+Lions Man,MajorEnemies
+Loxodonta africana,sciname
+Mackerel_ Spanish,name
+Macropus rufus,sciname
+Magpie_ Black-billed,name
+Mammalia,class
+Man,MajorEnemies
+Man Carnivore-Larger,MajorEnemies
+Man Crows,MajorEnemies
+Man Great-Horned-Owl,MajorEnemies
+Man Killer-whales,MajorEnemies
+Man Wolf Mountain-lions,MajorEnemies
+Manatee,name
+Marine,habitat
+Marine Aquatic,habitat
+Marmota monax,sciname
+Marshes Ponds Fields-open,biome
+Megolobatrachus japonicus,sciname
+Melanogrammus aeglefinus,sciname
+Meleagris gallopavo,sciname
+Mellisuga helenae,sciname
+Micropterus salmoides,sciname
+Mink_ American,name
+Moist-areas Gardens,biome
+Molliensia sphenops,sciname
+Molly,name
+Monedula,sciname
+Mountains Plains,biome
+Mouse_ House,name
+Mouse_ White-footed,name
+Mule,name
+Mus musculus,sciname
+Mustela rixosa,sciname
+Mustela vison,sciname
+Myocastor coypus,sciname
+Myotis lucifugus,sciname
+N one,eggshell
+Naja naja atra,sciname
+None,eggshell
+Numida melearis,sciname
+Nutria,name
+Ocean Lakes,biome
+Ocean Rivers,biome
+Ocean-Atlantic,biome
+Ocean-Coast,biome
+Ocean-Shores Lake-Shores,biome
+Ocean-Tropical,biome
+Ocean-open,biome
+Ocean-open-water,biome
+Ocean-shoreline-Atlantic,biome
+Ocean-shores,biome
+Oceans-temperate,biome
+Odocoileus virginianus,sciname
+Omnivore,foodtype
+Oncorhynchus keta,sciname
+Open-land,biome
+Openland-New-Zealand,biome
+Opossum_ Large American,name
+Ornithorhynchus anatinus,sciname
+Osteichhyes,class
+Osteichthyes,class
+Osteichtyes,class
+Ostrich,name
+Ot her-fish,MajorEnemies
+Other-fish,MajorEnemies
+Ovis aries,sciname
+Pandaka pygmaea,sciname
+Panthera leo,sciname
+Parchment,eggshell
+Penguin_ Adelie,name
+Perca fluviatilis,sciname
+Perch,name
+Peromyscus leucopus,sciname
+Petromyzon marinus,sciname
+Phasianus colchicus,sciname
+Pheasant_ Ringnecked,name
+Pica pica,sciname
+Pig,name
+Pigeon,name
+Pike_ Northern,name
+Plates,integument
+Platypus_ Duck-billed,name
+Poikilotherm,tempreg
+Ponds,biome
+Ponds Streams,biome
+Porcupine,name
+Pseudopleuronectes americanus,sciname
+Pteropus vampyrus,sciname
+Pumpkinseed,name
+Pygoscelis,sciname
+Quail_ Bobwhite,name
+Quail_ Japanese/European,name
+Quills,integument
+Rabbit_ Domestic,name
+Raja macrorhynchus,sciname
+Rana catesbeiana,sciname
+Rana pipiens,sciname
+Rat_ Norway,name
+Rattus norvegicus,sciname
+Reptilia,class
+Rhincodon typus,sciname
+Rivers,biome
+Rivers Lakes Ocean,biome
+Rivers Streams,biome
+Rivers-N.America Lakes-N.America,biome
+Rivers-North-America,biome
+Rivers-Warm Lakes-Warm,biome
+Rivers-large,biome
+Robin,name
+Rook,name
+Running,locomotion
+Salamander_ Japanese,name
+Salamander_ Tiger,name
+Salmo gairdneri,sciname
+Salmo trutta,sciname
+Salmon_ Chum,name
+Scales,integument
+Sciurus carolinensis,sciname
+Scomberomorus maculatus,sciname
+Sea horse,name
+Sea lamprey,name
+Seal_ fur,name
+Serinus canarius,sciname
+Shark_ Hammerhead,name
+Shark_ whale,name
+Sheep,name
+Shrew_ Musked,name
+Shrew_ dwarf,name
+Skate,name
+Skin,integument
+Skin-moist,integument
+Skin-thick,integument
+Skin-warty,integument
+Sminthillud limbatus,sciname
+Snakes Cats,MajorEnemies
+Soft,eggshell
+Sorex cinereus,sciname
+Sphyrna zygaena,sciname
+Squalus suckleyi,sciname
+Squirrel_ Gray,name
+Starling_ Common,name
+Stickleback_ three spine,name
+Sting Ray,name
+Streams,biome
+Streams Lakes,biome
+Streams Ocean,biome
+Streams Ponds,biome
+Streams Ponds-in-Australia,biome
+Streams-Tropical,biome
+Streams-near,biome
+Streams-near-sea,biome
+Struthio camelus,sciname
+Sturgeon_ Atlantic,name
+Sturnus vulgaris,sciname
+Suncus etruscus,sciname
+Sus scrofa,sciname
+Swimming,locomotion
+Swimming Walking,locomotion
+Swordtail_ Mexican,name
+Tamias striatus,sciname
+Tapir,name
+Tapirus terrestris,sciname
+Temperate-Europe Temperate-Asia,biome
+Temperate-coast,biome
+Terrestrial,habitat
+Terrestrial .,habitat
+Terrestrial Marine,habitat
+Thunnus thynnus,sciname
+Toad_ American,name
+Trichechus manatus,sciname
+Tropical-S.America,biome
+Tropical-shores,biome
+Tropics,biome
+Trout_ Rainbow,name
+Trout_ brown,name
+Tuna,name
+Tundra Forest,biome
+Turdus migratorius,sciname
+Turkey,name
+Tursiops truncatus,sciname
+Ursus americanus,sciname
+Ursus horribilis,sciname
+Vulture_ Turkey,name
+Walk ing,locomotion
+Walking,locomotion
+Walking Flight,locomotion
+Walking Gallop,locomotion
+Walking Running,locomotion
+Walking Swimming,locomotion
+Weasel_ least,name
+Weasels Hawks Owls Cats,MajorEnemies
+Whale_ Blue,name
+Where man is found,biome
+Where-man-is-found,biome
+Where-man-is-found Fields,biome
+Woodchuck (Groundhog),name
+Woodland,biome
+Woodland Brushland,biome
+Woodland Grassland,biome
+Woodland-Canary-Islands,biome
+Wool,integument
+Xiphophorus helleri,sciname
+Yes,eggshell
+gelatinous,eggshell
