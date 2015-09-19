@@ -1,4 +1,6 @@
 import random
+import sys
+import collections
 
 n=open('nodes1.csv','r')
 e=open('edges1.csv','r')
@@ -12,6 +14,13 @@ edges={'source':[],'target':[],'label':[]}
 two_op=['and','or','!=','<=','and not']
 one_op=['not','']
 op_map={'and':['','and',''],'or':['either','or','or both'],'not':'not','<=':['','implies',''],'!=':['either','or',''],'and not':['','but not',''],'':''}
+reverse_map=collections.OrderedDict()
+reverse_map['and']='and'
+reverse_map['either']='!='
+reverse_map['both']='or'
+reverse_map['not']='not'
+reverse_map['implies']='<='
+reverse_map['but']='and not'
 two_tables={}
 one_tables={}
 truefalse={'t':True,'T':True,'f':False,'F':False}
@@ -176,11 +185,10 @@ for i in range(162):
 	    n_grams_dict[six_grams[i][j]]=[]
 	    n_grams_dict[six_grams[i][j]].append(i)
 
-'''for i in n_grams_dict.keys():
-    print i+':'
-    print n_grams_dict[i]'''
 
-while True:
+qora=input('Enter 1 to answer questions, 2 to enter questions and 3 to exit: ')
+
+while qora==1:
     q1=random.randrange(1,1302)
     choice=random.randrange(8)
     ques=''
@@ -398,3 +406,85 @@ while True:
     else:
         print 'Incorrect!'
     print
+    qora=input('Enter 1 to answer questions, 2 to enter questions and 3 to exit: ')
+
+if qora==3:
+    sys.exit()
+
+
+while qora==2:
+    question=raw_input('Enter question: ')
+    tokens={'source':[],'label':[],'target':[],'operator':''}
+    split1=question.split("'")
+    split2=[]
+    mod=0
+    for i in split1:
+    	if mod==0:
+		temp=i.split(' ')
+		for j in temp:
+			if j not in ['the','that','present'] and len(j.strip()) is not 0:
+				split2.append(j)
+		mod=1
+	else:
+		split2.append("'"+i+"'")
+		mod=0
+    '''string=''
+    for i in split1:
+    	if len(i)==1:
+		string=string+' '+i
+	else:
+		if len(string) is not 0:
+			split2.append(string)
+			string=''
+    		if i not in ['the','that','present'] and i is not '':
+			split2.append(i)'''
+    print split2
+    for i in reverse_map:
+    	if i in split2:
+		tokens['operator']=reverse_map[i]
+    if tokens['operator']=='' or tokens['operator']=='not':
+    	ind=split2.index('of')
+	tokens['label'].append(split2[ind-1])
+	tokens['source'].append(split2[ind+1])
+	ind=split2.index('is')
+	tokens['target'].append(split2[ind-1])
+    elif 'its' in split2:
+    	#2 labels
+    	ind=split2.index('of')
+	tokens['source'].append(split2[ind+1])
+	tokens['label'].append(split2[ind-1])
+	ind=split2.index('its')
+	tokens['label'].append(split2[ind+1])
+	count=1
+	for i in range(len(split2)):
+		if split2[i]=='is':
+			tokens['target'].append(split2[i+1])
+    else:
+  	#2 sources
+	ind=split2.index('is')
+	tokens['target'].append(split2[ind-1])
+	ind=split2.index('of')
+	tokens['label'].append(split2[ind-1])
+	keywords=op_map[tokens['operator']]
+	if isinstance(keywords,list):
+		ind=split2.index(keywords[1].split(' ')[0])
+		tokens['source'].append(split2[ind-1])
+		tokens['source'].append(split2[ind+len(keywords[1].split(' '))])
+    outputs=[]
+    print tokens
+    for i in tokens['source']:
+	for j in range(len(tokens['target'])):
+		flag=0
+		for k in range(len(edges['source'])):
+			if allnodes[int(edges['source'][k])][1]==i and allnodes[int(edges['target'][k])][1]==tokens['target'][j] and edges['label'][k]==tokens['label'][j]:
+				print k
+				outputs.append('True')
+				flag=1
+				break
+		if flag==0:
+		 	outputs.append('False')
+    print outputs
+    if len(outputs)==1:
+	print eval(tokens['operator']+' '+outputs[0])
+    else:
+	print eval(outputs[0]+' '+tokens['operator']+' '+outputs[1])
